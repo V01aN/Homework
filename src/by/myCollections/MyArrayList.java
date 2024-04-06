@@ -4,7 +4,6 @@ public class MyArrayList<T extends Comparable<T>>{
     public int size;
     private int maxSize;
     private Object[] arr;
-    T data;
 
     public MyArrayList() {
         size = 0;
@@ -32,9 +31,7 @@ public class MyArrayList<T extends Comparable<T>>{
         if (maxSize == size) {
             int newSize = maxSize + maxSize / 2 + 1;
             Object[] newArr = new Object[newSize];
-            for (int i = 0; i != maxSize; i++) {
-                newArr[i] = arr[i];
-            }
+            System.arraycopy(arr, 0, newArr, 0, maxSize);
             arr = newArr;
             maxSize = newSize;
         }
@@ -47,12 +44,21 @@ public class MyArrayList<T extends Comparable<T>>{
     }
 
     public void remove(int id) {
-        for (int i = id; i < size; i++) arr[i] = arr[i+1];
-        size--;
+        if (id < size) {
+            for (int i = id; i < size; i++) arr[i] = arr[i + 1];
+            size--;
+        }
+        else System.out.println("invalid id!");
     }
 
     public T get(int id) {
-        return (T) arr[id];
+        if (id < size) {
+            return (T) arr[id];
+        }
+        else {
+            System.out.println("invalid id!");
+            return null;
+        }
     }
 
     public void addAll(MyArrayList<T> list) {

@@ -13,7 +13,8 @@ public class Main {
         list.add(3);
         list.add(9);
         anotherList.add(2);
-        anotherList.add(2);
+        anotherList.add(8);
+        list.remove(20);
         list.addAll(anotherList);
         System.out.println();
         MyArrayList.sort(list);
