@@ -38,6 +38,19 @@ public class MyLinkedList<T extends Comparable<T>> {
         return current.item;
     }
 
+    public void remove(int id) {
+        if (first == null || id >= size) {
+            return;
+        }
+        Node<T> current = first;
+        for (int i = 0; i < id; i++) {
+            current = current.next;
+        }
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+        size--;
+    }
+
     private static class Node<T> {
         T item;
         MyLinkedList.Node<T> next;

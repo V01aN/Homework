@@ -9,7 +9,7 @@ public class Main {
         list.add(2);
         list.add(3);
         list.add(2);
-        list.add(2);
+        list.add(7);
         for (int i = 0; i < list.size; i++) {
             System.out.print(list.get(i) + " ");
         }
