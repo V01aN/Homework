@@ -51,6 +51,13 @@ public class MyLinkedList<T extends Comparable<T>> {
         size--;
     }
 
+    public void addAll(MyLinkedList<T> anotherList) {
+        Node<T> current = anotherList.first;
+        for (int i = 0; i < anotherList.size; i++) {
+            add(anotherList.get(i));
+        }
+    }
+
     private static class Node<T> {
         T item;
         MyLinkedList.Node<T> next;
