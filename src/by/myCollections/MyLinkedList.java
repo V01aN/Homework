@@ -11,6 +11,13 @@ public class MyLinkedList<T extends Comparable<T>> {
         size = 0;
     }
 
+    public MyLinkedList(MyLinkedList<T> anotherList) {
+        first = anotherList.first;
+        for (int i = 0; i < anotherList.size; i++) {
+            add(anotherList.get(i));
+        }
+    }
+
     public void add(T elem) {
         if (first.item == null) {
             first.item = elem;
