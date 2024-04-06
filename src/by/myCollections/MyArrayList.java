@@ -40,7 +40,7 @@ public class MyArrayList<T extends Comparable<T>>{
         }
     }
 
-    public void set(T element, int pos) {
+    private void set(T element, int pos) {
         if (pos < size) {
             arr[pos] = element;
         }
@@ -62,12 +62,13 @@ public class MyArrayList<T extends Comparable<T>>{
     }
 
     public static void sort(MyArrayList list) {
-        Object temp;
+        Comparable temp;
         for (int i = 0, end = list.size; i < list.size; i++, end--) {
-            for (int j = 0; j < end; j++) {
+            for (int j = 0; j < end - 1; j++) {
                 if (list.get(j).compareTo(list.get(j + 1)) > 0) {
                     temp = list.get(j);
-                    list.get(j) = list.get(j + 1);
+                    list.set(list.get(j + 1), j);
+                    list.set(temp, j + 1);
                 }
             }
         }

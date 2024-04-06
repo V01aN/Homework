@@ -8,17 +8,15 @@ public class Main {
         list.add(5);
         list.add(5);
         list.add(5);
-        list.add(5);
-        list.add(5);
-        list.add(5);
-        list.add(5);
-        anotherList.add(2);
-        anotherList.add(2);
-        anotherList.add(2);
-        anotherList.add(2);
+        list.add(3);
+        list.add(3);
+        list.add(3);
+        list.add(9);
         anotherList.add(2);
         anotherList.add(2);
         list.addAll(anotherList);
+        System.out.println();
+        MyArrayList.sort(list);
         for(int i = 0; i < list.size; i++) {
             System.out.print(list.get(i) + " ");
         }
