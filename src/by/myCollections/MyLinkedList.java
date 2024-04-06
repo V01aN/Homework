@@ -12,15 +12,30 @@ public class MyLinkedList<T extends Comparable<T>> {
     }
 
     public void add(T elem) {
-        if (first == null && last == null) {
-            first = new Node<>(null, elem, null);
-            last = first;
+        if (first.item == null) {
+            first.item = elem;
         }
         else if (first == last) {
             last = new Node<>(first, elem, null);
             first.next = last;
+            last.prev = last;
         }
-        else last = new Node<>(last.prev, elem, null);
+        else {
+            last = new Node<>(last, elem, null);
+            last.prev.next = last;
+        }
+        size++;
+    }
+
+    public T get(int id) {
+        if (first == null || id >= size) {
+            return null;
+        }
+        Node<T> current = first;
+        for (int i = 0; i < id; i++) {
+            current = current.next;
+        }
+        return current.item;
     }
 
     private static class Node<T> {
