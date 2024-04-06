@@ -70,13 +70,16 @@ public class MyArrayList<T extends Comparable<T>>{
     public static void sort(MyArrayList list) {
         Comparable temp;
         for (int i = 0, end = list.size; i < list.size; i++, end--) {
+            boolean sorted = true;
             for (int j = 0; j < end - 1; j++) {
                 if (list.get(j).compareTo(list.get(j + 1)) > 0) {
+                    sorted = false;
                     temp = list.get(j);
                     list.set(list.get(j + 1), j);
                     list.set(temp, j + 1);
                 }
             }
+            if (sorted) break;
         }
     }
 }
