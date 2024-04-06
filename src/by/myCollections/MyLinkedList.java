@@ -55,8 +55,16 @@ public class MyLinkedList<T extends Comparable<T>> {
         for (int i = 0; i < id; i++) {
             current = current.next;
         }
-        current.prev.next = current.next;
-        current.next.prev = current.prev;
+        if (current == first) {
+            first = current.next;
+            first.prev = null;
+            current = null;
+        }
+        else {
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+            current = null;
+        }
         size--;
     }
 
