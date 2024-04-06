@@ -1,6 +1,6 @@
 package by.myCollections;
 
-public class MyArrayList<T extends Comparable<T>> implements Comparable<MyArrayList<T>>{
+public class MyArrayList<T extends Comparable<T>>{
     public int size;
     private int maxSize;
     private Object[] arr;
@@ -27,7 +27,6 @@ public class MyArrayList<T extends Comparable<T>> implements Comparable<MyArrayL
     }
 
     public void add(T element) {
-        System.out.println(maxSize);
         arr[size] = element;
         size++;
         if (maxSize == size) {
@@ -41,7 +40,11 @@ public class MyArrayList<T extends Comparable<T>> implements Comparable<MyArrayL
         }
     }
 
-
+    public void set(T element, int pos) {
+        if (pos < size) {
+            arr[pos] = element;
+        }
+    }
 
     public void remove(int id) {
         for (int i = id; i < size; i++) arr[i] = arr[i+1];
@@ -58,21 +61,15 @@ public class MyArrayList<T extends Comparable<T>> implements Comparable<MyArrayL
         }
     }
 
- /*   public static void sort(MyArrayList list) {
+    public static void sort(MyArrayList list) {
         Object temp;
         for (int i = 0, end = list.size; i < list.size; i++, end--) {
             for (int j = 0; j < end; j++) {
                 if (list.get(j).compareTo(list.get(j + 1)) > 0) {
                     temp = list.get(j);
                     list.get(j) = list.get(j + 1);
-
                 }
             }
         }
-    }*/
-
-    @Override
-    public int compareTo(MyArrayList<T> list) {
-        return data.compareTo(list.data);
     }
 }
