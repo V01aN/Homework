@@ -58,7 +58,7 @@ public class MyArrayList<T extends Comparable<T>> implements Comparable<MyArrayL
         }
     }
 
-    public static void sort(MyArrayList list) {
+ /*   public static void sort(MyArrayList list) {
         Object temp;
         for (int i = 0, end = list.size; i < list.size; i++, end--) {
             for (int j = 0; j < end; j++) {
@@ -69,7 +69,7 @@ public class MyArrayList<T extends Comparable<T>> implements Comparable<MyArrayL
                 }
             }
         }
-    }
+    }*/
 
     @Override
     public int compareTo(MyArrayList<T> list) {
