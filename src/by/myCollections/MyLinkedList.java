@@ -12,7 +12,9 @@ public class MyLinkedList<T extends Comparable<T>> {
     }
 
     public MyLinkedList(MyLinkedList<T> anotherList) {
-        first = anotherList.first;
+        first = new Node<>(null, null, null);
+        last = first;
+        size = 0;
         for (int i = 0; i < anotherList.size; i++) {
             add(anotherList.get(i));
         }
