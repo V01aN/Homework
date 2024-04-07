@@ -47,6 +47,14 @@ public class MyLinkedList<T extends Comparable<T>> {
         return current.item;
     }
 
+    private void set(T element, int pos) {
+        Node<T> current = first;
+        for (int i = 0; i < pos; i++) {
+            current = current.next;
+        }
+        current.item = element;
+    }
+
     public void remove(int id) {
         if (first == null || id >= size || id < 0) {
             return;
@@ -78,7 +86,23 @@ public class MyLinkedList<T extends Comparable<T>> {
         }
     }
 
-    private static class Node<T> {
+    public static void sort(MyLinkedList list) {
+        Comparable temp;
+        for (int i = 0, end = list.size; i < list.size; i++, end--) {
+            boolean sorted = true;
+            for (int j = 0; j < end - 1; j++) {
+                if (list.get(j).compareTo(list.get(j + 1)) > 0) {
+                    sorted = false;
+                    temp = list.get(j);
+                    list.set(list.get(j + 1), j);
+                    list.set(temp, j + 1);
+                }
+            }
+            if (sorted) break;
+        }
+    }
+
+    private static class Node<T extends Comparable<T>> {
         T item;
         MyLinkedList.Node<T> next;
         MyLinkedList.Node<T> prev;
