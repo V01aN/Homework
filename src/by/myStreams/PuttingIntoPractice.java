@@ -1,7 +1,9 @@
 package by.myStreams;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class PuttingIntoPractice {
 
@@ -19,5 +21,10 @@ public class PuttingIntoPractice {
                 new Transaction(mario, 2012, 700),
                 new Transaction(alan, 2012, 950)
         );
+
+        transactions.stream()
+                .filter(x -> x.getYear() == 2011)
+                .sorted(Comparator.comparing(Transaction::getYear))
+                .forEach(System.out::println);
     }
 }
