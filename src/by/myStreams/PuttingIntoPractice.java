@@ -3,6 +3,7 @@ package by.myStreams;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -43,8 +44,11 @@ public class PuttingIntoPractice {
         System.out.println(Stream.of(raoul, mario, alan, brian)
                 .anyMatch(x -> x.getCity() == "Milan"));
         //task 6
-        System.out.println((Integer) transactions.stream()
+        System.out.println(transactions.stream()
                 .filter(x -> x.getTrader().getCity() == "Cambridge").
                 mapToInt(x -> x.getValue()).sum());
+        //task 7
+        System.out.println(transactions.stream()
+                .reduce(BinaryOperator.maxBy(Comparator.comparing(Transaction::getValue))));
     }
 }
