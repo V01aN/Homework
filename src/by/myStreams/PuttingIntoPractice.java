@@ -37,6 +37,10 @@ public class PuttingIntoPractice {
         //task 4
         Stream.of(raoul, mario, alan, brian)
                 .sorted(Comparator.comparing(Trader::getName))
-                .forEach(x -> System.out.print(x.getName() + ", "));
+                .forEach(x -> System.out.print(x.getName() + " "));
+        //task 5
+        System.out.println();
+        System.out.println(Stream.of(raoul, mario, alan, brian)
+                .anyMatch(x -> x.getCity() == "Milan"));
     }
 }
