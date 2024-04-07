@@ -42,5 +42,9 @@ public class PuttingIntoPractice {
         System.out.println();
         System.out.println(Stream.of(raoul, mario, alan, brian)
                 .anyMatch(x -> x.getCity() == "Milan"));
+        //task 6
+        System.out.println((Integer) transactions.stream()
+                .filter(x -> x.getTrader().getCity() == "Cambridge").
+                mapToInt(x -> x.getValue()).sum());
     }
 }
