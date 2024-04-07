@@ -23,11 +23,11 @@ public class MyLinkedList<T extends Comparable<T>> {
     public void add(T elem) {
         if (first.item == null) {
             first.item = elem;
+            last = first;
         }
         else if (first == last) {
             last = new Node<>(first, elem, null);
             first.next = last;
-            last.prev = last;
         }
         else {
             last = new Node<>(last, elem, null);
@@ -37,7 +37,7 @@ public class MyLinkedList<T extends Comparable<T>> {
     }
 
     public T get(int id) {
-        if (first == null || id >= size) {
+        if (first == null || id >= size || id < 0) {
             return null;
         }
         Node<T> current = first;
@@ -48,7 +48,7 @@ public class MyLinkedList<T extends Comparable<T>> {
     }
 
     public void remove(int id) {
-        if (first == null || id >= size) {
+        if (first == null || id >= size || id < 0) {
             return;
         }
         Node<T> current = first;
@@ -58,13 +58,16 @@ public class MyLinkedList<T extends Comparable<T>> {
         if (current == first) {
             first = current.next;
             first.prev = null;
-            current = null;
+        }
+        else if (current == last) {
+            last.prev.next = null;
+            last = last.prev;
         }
         else {
             current.prev.next = current.next;
             current.next.prev = current.prev;
-            current = null;
         }
+        current = null;
         size--;
     }
 

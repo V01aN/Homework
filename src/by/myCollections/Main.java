@@ -12,14 +12,16 @@ public class Main {
         list.add(3);
         list.add(2);
         list.add(1);
+        list.remove(7);
+        System.out.println(list.get(6));
         for (int i = 0; i < list.size; i++) {
             System.out.print(list.get(i) + " ");
         }
         System.out.println();
         list.remove(1);
         list.remove(1);
-        //list.remove(2);
-        //list.remove(2);
+//        list.remove(2);
+//        list.remove(2);
         for (int i = 0; i < list.size; i++) {
             System.out.print(list.get(i) + " ");
         }
