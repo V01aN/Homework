@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.BinaryOperator;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -48,7 +49,12 @@ public class PuttingIntoPractice {
                 .filter(x -> x.getTrader().getCity() == "Cambridge").
                 mapToInt(x -> x.getValue()).sum());
         //task 7
+        System.out.println((transactions.stream()
+                .max(Comparator.comparing(Transaction::getValue))
+                .get()));
+        //task 8
         System.out.println(transactions.stream()
-                .reduce(BinaryOperator.maxBy(Comparator.comparing(Transaction::getValue))));
+                .reduce(BinaryOperator.minBy(Comparator.comparing(Transaction::getValue)))
+                .get());
     }
 }
