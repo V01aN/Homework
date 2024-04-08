@@ -30,14 +30,14 @@ public class PuttingIntoPractice {
         System.out.println("Task 1:");
         transactions.stream()
                 .filter(x -> x.getYear() == 2011)
-                .sorted(Comparator.comparing(Transaction::getYear))
+                .sorted(Comparator.comparing(Transaction::getValue))
                 .forEach(System.out::println);
         //task 2
         System.out.println("Task 2:");
         Stream.of(raoul, mario, alan, brian)
-                        .map(Trader::getCity)
-                                .distinct()
-                                        .forEach(System.out::println);
+                .map(Trader::getCity)
+                .distinct()
+                .forEach(System.out::println);
         //task 3
         System.out.println("Task 3:");
         Stream.of(raoul, mario, alan, brian)
